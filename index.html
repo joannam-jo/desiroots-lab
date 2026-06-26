@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Haldi Turmeric Powder — Lab Test Report</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #C8952A;
+    --gold-light: #F5E6C8;
+    --gold-pale: #FDF8EE;
+    --green: #2D6A4F;
+    --green-light: #D8F3DC;
+    --red: #AE2012;
+    --text: #1A1A1A;
+    --muted: #6B6B6B;
+    --border: #E2E2E2;
+    --white: #FFFFFF;
+    --bg: #F7F5F0;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--white);
+    border-bottom: 3px solid var(--gold);
+    padding: 0 2rem;
+  }
+  .header-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1.5rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .brand-icon {
+    width: 52px;
+    height: 52px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+  }
+  .brand-name {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: -0.03em;
+  }
+  .brand-sub {
+    font-size: 0.75rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+  .certified-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    opacity: 0;
+    animation: stampIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s forwards;
+  }
+  @keyframes stampIn {
+    from { opacity: 0; transform: scale(1.4) rotate(-8deg); }
+    to   { opacity: 1; transform: scale(1) rotate(-5deg); }
+  }
+  .cert-ring {
+    border: 3px solid var(--green);
+    border-radius: 50%;
+    width: 72px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 6px;
+  }
+  .cert-text {
+    font-size: 0.55rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--green);
+    text-align: center;
+    line-height: 1.2;
+  }
+  .cert-check {
+    font-size: 1.1rem;
+    color: var(--green);
+    margin: 1px 0;
+  }
+
+  /* ── Hero banner ── */
+  .hero {
+    background: linear-gradient(135deg, #3D2B00 0%, #7A5200 60%, #C8952A 100%);
+    padding: 2.5rem 2rem;
+    color: white;
+  }
+  .hero-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .hero-eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 0.5rem;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  .hero-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    line-height: 1.2;
+  }
+  .hero-sub {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 1.5rem;
+  }
+  .meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+  .meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .meta-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.5);
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  .meta-value {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: white;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  /* ── Main content ── */
+  .main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 2rem 4rem;
+  }
+
+  /* ── Status cards ── */
+  .status-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .status-card {
+    background: var(--white);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    padding: 1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .status-card-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+  }
+  .status-card-value {
+    font-size: 1.3rem;
+    font-weight: 700;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  .status-card-sub {
+    font-size: 0.72rem;
+    color: var(--muted);
+  }
+  .pass { color: var(--green); }
+  .gold-val { color: var(--gold); }
+
+  /* ── Section heading ── */
+  .section-head {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 2rem 0 1rem;
+  }
+  .section-head h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  .section-tag {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    background: var(--border);
+    padding: 3px 8px;
+    border-radius: 4px;
+  }
+
+  /* ── Nutrient table ── */
+  .table-wrap {
+    background: var(--white);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+  }
+  thead th {
+    background: #2A1800;
+    color: rgba(255,255,255,0.75);
+    font-size: 0.65rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  thead th:last-child { text-align: right; }
+  tr:not(:last-child) td { border-bottom: 1px solid var(--border); }
+  td {
+    padding: 0.65rem 1rem;
+    vertical-align: middle;
+  }
+  .nutrient-name { font-weight: 500; color: var(--text); }
+  .nutrient-sub { font-size: 0.75rem; color: var(--muted); padding-left: 1.25rem; }
+  .mono { font-family: 'IBM Plex Mono', monospace; font-size: 0.82rem; }
+  td:last-child { text-align: right; }
+  .pass-pill {
+    display: inline-block;
+    background: var(--green-light);
+    color: var(--green);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  .bar-cell { width: 120px; }
+  .bar-bg {
+    background: #F0EDE8;
+    border-radius: 4px;
+    height: 6px;
+    overflow: hidden;
+  }
+  .bar-fill {
+    height: 6px;
+    border-radius: 4px;
+    background: var(--gold);
+    transition: width 1s ease;
+  }
+  .bar-fill.green { background: var(--green); }
+  tr:hover td { background: var(--gold-pale); }
+
+  /* ── Contaminant table ── */
+  .result-pass { color: var(--green); font-weight: 600; }
+  .result-nd { color: var(--muted); }
+
+  /* ── Info box ── */
+  .info-box {
+    background: var(--gold-light);
+    border: 1px solid #D4A840;
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    margin-top: 1.5rem;
+  }
+  .info-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 1px; }
+  .info-text { font-size: 0.82rem; color: #5C3D00; line-height: 1.6; }
+  .info-text strong { font-weight: 600; }
+
+  /* ── Footer ── */
+  footer {
+    background: #1A1400;
+    color: rgba(255,255,255,0.45);
+    padding: 2rem;
+    text-align: center;
+    font-size: 0.78rem;
+    line-height: 1.7;
+  }
+  footer strong { color: rgba(255,255,255,0.75); }
+
+  /* ── Responsive ── */
+  @media (max-width: 600px) {
+    .header-inner { flex-wrap: wrap; gap: 0.75rem; }
+    .hero-title { font-size: 1.3rem; }
+    .bar-cell { display: none; }
+    .meta-row { gap: 1rem; }
+    table { font-size: 0.8rem; }
+    td, thead th { padding: 0.55rem 0.75rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+  <div class="header-inner">
+    <div class="brand">
+      <div class="brand-icon">🌿</div>
+      <div>
+        <div class="brand-name">Haldi</div>
+        <div class="brand-sub">Turmeric Powder · Rich Aroma · Pure &amp; Natural</div>
+      </div>
+    </div>
+    <div class="certified-badge" aria-label="Lab certified">
+      <div class="cert-ring">
+        <div class="cert-text">LAB<br>TESTED</div>
+        <div class="cert-check">✓</div>
+        <div class="cert-text">CERTIFIED</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Official Laboratory Analysis Report</div>
+    <h1 class="hero-title">Turmeric Powder — Certificate of Analysis</h1>
+    <p class="hero-sub">Each lot is independently tested for purity, potency, and safety before release.</p>
+    <div class="meta-row">
+      <div class="meta-item">
+        <span class="meta-label">Report No.</span>
+        <span class="meta-value">HDL-2024-0091</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Lot / Batch</span>
+        <span class="meta-value">LOT-TUR-2024-A</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Test Date</span>
+        <span class="meta-value">2024-11-15</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Expiry Date</span>
+        <span class="meta-value">2026-11-14</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Testing Laboratory</span>
+        <span class="meta-value">Accredited Lab — ISO 17025</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Main -->
+<main class="main">
+
+  <!-- Status cards -->
+  <div class="status-grid" style="margin-top: 2rem;">
+    <div class="status-card">
+      <span class="status-card-label">Overall Result</span>
+      <span class="status-card-value pass">PASS ✓</span>
+      <span class="status-card-sub">All parameters within limits</span>
+    </div>
+    <div class="status-card">
+      <span class="status-card-label">Curcuminoids</span>
+      <span class="status-card-value gold-val">&gt; 3.0%</span>
+      <span class="status-card-sub">Active compound</span>
+    </div>
+    <div class="status-card">
+      <span class="status-card-label">Moisture</span>
+      <span class="status-card-value">9.8%</span>
+      <span class="status-card-sub">Max 12% (pass)</span>
+    </div>
+    <div class="status-card">
+      <span class="status-card-label">Heavy Metals</span>
+      <span class="status-card-value pass">ND</span>
+      <span class="status-card-sub">Not detected</span>
+    </div>
+    <div class="status-card">
+      <span class="status-card-label">Microbial</span>
+      <span class="status-card-value pass">CLEAN ✓</span>
+      <span class="status-card-sub">All within CFIA limits</span>
+    </div>
+  </div>
+
+  <!-- Nutrition Facts -->
+  <div class="section-head">
+    <h2>Nutrition facts</h2>
+    <div class="section-line"></div>
+    <span class="section-tag">per 2 g serving (1 tsp)</span>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:40%">Nutrient</th>
+          <th>Amount</th>
+          <th>% DV</th>
+          <th class="bar-cell" style="text-align:left">Level</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="nutrient-name">Energy</td>
+          <td class="mono">8 kcal</td>
+          <td class="mono">—</td>
+          <td class="bar-cell"><div class="bar-bg"><div class="bar-fill" style="width:0%"></div></div></td>
+          <td><span class="pass-pill">✓ Pass</span></td>
+        </tr>
+        <tr>
+          <td class="nutrient-name">Fat (total)</td>
+          <td class="mono">0 g</td>
+          <td class="mono">0%</td>
+          <td class="bar-cell"><div class="bar-bg"><div class="bar-fill" style="width:0%"></div></div></td>
+          <td><span class="pass-pill">✓ Pass</span></td>
+        </tr>
+        <tr>
+          <td class="nutrient-sub">— Saturated fat</td>
+          <td class="mono">0 g</td>
+          <td class="mono">0%</td>
+          <td class="bar-cell"><div class="bar-bg"><div class="bar-fill" style="width:0%"></div></div></td>
+          <td><span class="pass-pill">✓ Pass</span></td>
+        </tr>
+        <tr>
+          <td class="nutrient-sub">— Trans fat</td>
+          <td class="mono">0 g</td>
+          <td class="mono">—</td>
+          <td class="bar-cell"><div class="bar-bg"><div class="bar-fill" style="width:0%"></div></div></td>
+          <td><span class="pass-pill">✓ Pass</span></td>
+        </tr>
+        <tr>
+          <td class="nutrient-name">Cholesterol</td>
+          <td class="mono">0 mg</td>
+          <td class="mono">—</td>
+          <td class="bar-cell"><div class="bar-bg"><div class="bar-fill" style="width:0%"></div></div></td>
+          <td><span class="pass-pill">✓ Pass</span></td>
+        </tr>
+        <tr>
+          <td class="nutrient-name">Sodium</td>
+          <td class="mono">1 mg</td>
+          <td class="mono">0%</td>
+          <td class="bar-cell"><div class="bar-bg"><div class="bar-fill" style="width:1%"></div></div></td>
+          <td><span class="pass-pill">✓ Pass</span></td>
+        </tr>
+        <tr>
+          <td class="nutrient-name">Carbohydrate (total)</td>
+          <td class="mono">1.5 g</td>
+          <td class="mono">1%</td>
+          <td class="bar-cell"><div class="bar-bg"><div class="bar-fill" style="width:5%"></div></div></td>
+          <td><span class="pass-pill">✓ Pass</span></td>
+        </tr>
+        <tr>
+          <td class="nutrient-sub">— Dietary fibre</td>
+          <td class="mono">0.4 g</td>
+          <td class="mono">1%</td>
+          <td class="bar-cell"><div class="bar-bg"><div class="bar-fill" style="width:4%"></div></div></td>
+          <td><span class="pass-pill">✓ Pass</span></td>
+        </tr>
+        <tr>
+          <td class="nutrient-sub">— Total sugars</td>
+          <td class="mono">0.1 g</td>
+          <td class="mono">—</td>
+          <td class="bar-cell"><div class="bar-bg"><div class="bar-fill" style="width:1%"></div></div></td>
+          <td><span class="pass-pill">✓ Pass</span></td>
+        </tr>
+        <tr>
+          <td class="nutrient-name">Protein</td>
+          <td class="mono">0.3 g</td>
+          <td class="mono">—</td>
+          <td class="bar-cell"><div class="bar-bg"><div class="bar-fill green" style="width:2%"></div></div></td>
+          <td><span class="pass-pill">✓ Pass</span></td>
+        </tr>
+        <tr>
+          <td class="nutrient-name">Vitamin A</td>
+          <td class="mono">0 RE</td>
+          <td class="mono">0%</td>
+          <td class="bar-cell"><div class="bar-bg"><div class="bar-fill green" style="width:0%"></div></div></td>
+          <td><span class="pass-pill">✓ Pass</span></td>
+        </tr>
+        <tr>
+          <td class="nutrient-name">Vitamin C</td>
+          <td class="mono">0.9 mg</td>
+          <td class="mono">1%</td>
+          <td class="bar-cell"><div class="bar-bg"><div class="bar-fill green" style="width:4%"></div></div></td>
+          <td><span class="pass-pill">✓ Pass</span></td>
+        </tr>
+        <tr>
+          <td class="nutrient-name">Vitamin D</td>
+          <td class="mono">0 µg</td>
+          <td class="mono">0%</td>
+          <td class="bar-cell"><div class="bar-bg"><div class="bar-fill green" style="width:0%"></div></div></td>
+          <td><span class="pass-pill">✓ Pass</span></td>
+        </tr>
+        <tr>
+          <td class="nutrient-name">Calcium</td>
+          <td class="mono">4 mg</td>
+          <td class="mono">0%</td>
+          <td class="bar-cell"><div class="bar-bg"><div class="bar-fill green" style="width:2%"></div></div></td>
+          <td><span class="pass-pill">✓ Pass</span></td>
+        </tr>
+        <tr>
+          <td class="nutrient-name">Iron</td>
+          <td class="mono">1.6 mg</td>
+          <td class="mono">9%</td>
+          <td class="bar-cell"><div class="bar-bg"><div class="bar-fill green" style="width:36%"></div></div></td>
+          <td><span class="pass-pill">✓ Pass</span></td>
+        </tr>
+        <tr>
+          <td class="nutrient-name">Potassium</td>
+          <td class="mono">56 mg</td>
+          <td class="mono">1%</td>
+          <td class="bar-cell"><div class="bar-bg"><div class="bar-fill green" style="width:5%"></div></div></td>
+          <td><span class="pass-pill">✓ Pass</span></td>
+        </tr>
+        <tr>
+          <td class="nutrient-name">Magnesium</td>
+          <td class="mono">4 mg</td>
+          <td class="mono">1%</td>
+          <td class="bar-cell"><div class="bar-bg"><div class="bar-fill green" style="width:3%"></div></div></td>
+          <td><span class="pass-pill">✓ Pass</span></td>
+        </tr>
+        <tr>
+          <td class="nutrient-name">Phosphorus</td>
+          <td class="mono">6 mg</td>
+          <td class="mono">0%</td>
+          <td class="bar-cell"><div class="bar-bg"><div class="bar-fill green" style="width:2%"></div></div></td>
+          <td><span class="pass-pill">✓ Pass</span></td>
+        </tr>
+        <tr>
+          <td class="nutrient-name">Zinc</td>
+          <td class="mono">0.1 mg</td>
+          <td class="mono">1%</td>
+          <td class="bar-cell"><div class="bar-bg"><div class="bar-fill green" style="width:3%"></div></div></td>
+          <td><span class="pass-pill">✓ Pass</span></td>
+        </tr>
+        <tr>
+          <td class="nutrient-name" style="color: var(--gold); font-weight:600;">Curcuminoids</td>
+          <td class="mono" style="color: var(--gold); font-weight:600;">&gt; 3%</td>
+          <td class="mono">—</td>
+          <td class="bar-cell"><div class="bar-bg"><div class="bar-fill" style="width:60%; background: var(--gold)"></div></div></td>
+          <td><span class="pass-pill">✓ Pass</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Contaminants / Safety -->
+  <div class="section-head">
+    <h2>Safety &amp; purity testing</h2>
+    <div class="section-line"></div>
+    <span class="section-tag">Contaminants</span>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:40%">Parameter</th>
+          <th>Result</th>
+          <th>Limit</th>
+          <th>Method</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="nutrient-name">Lead (Pb)</td>
+          <td class="mono result-nd">ND</td>
+          <td class="mono">&lt; 0.2 ppm</td>
+          <td class="mono" style="font-size:0.75rem; color: var(--muted)">ICP-MS</td>
+          <td><span class="pass-pill">✓ Pass</span></td>
+        </tr>
+        <tr>
+          <td class="nutrient-name">Arsenic (As)</td>
+          <td class="mono result-nd">ND</td>
+          <td class="mono">&lt; 0.1 ppm</td>
+          <td class="mono" style="font-size:0.75rem; color: var(--muted)">ICP-MS</td>
+          <td><span class="pass-pill">✓ Pass</span></td>
+        </tr>
+        <tr>
+          <td class="nutrient-name">Cadmium (Cd)</td>
+          <td class="mono result-nd">ND</td>
+          <td class="mono">&lt; 0.3 ppm</td>
+          <td class="mono" style="font-size:0.75rem; color: var(--muted)">ICP-MS</td>
+          <td><span class="pass-pill">✓ Pass</span></td>
+        </tr>
+        <tr>
+          <td class="nutrient-name">Mercury (Hg)</td>
+          <td class="mono result-nd">ND</td>
+          <td class="mono">&lt; 0.04 ppm</td>
+          <td class="mono" style="font-size:0.75rem; color: var(--muted)">CV-AAS</td>
+          <td><span class="pass-pill">✓ Pass</span></td>
+        </tr>
+        <tr>
+          <td class="nutrient-name">Pesticide residues</td>
+          <td class="mono result-nd">ND</td>
+          <td class="mono">Per CFIA MRL</td>
+          <td class="mono" style="font-size:0.75rem; color: var(--muted)">GC-MS/MS</td>
+          <td><span class="pass-pill">✓ Pass</span></td>
+        </tr>
+        <tr>
+          <td class="nutrient-name">Sudan dyes (I–IV)</td>
+          <td class="mono result-nd">ND</td>
+          <td class="mono">Not permitted</td>
+          <td class="mono" style="font-size:0.75rem; color: var(--muted)">HPLC</td>
+          <td><span class="pass-pill">✓ Pass</span></td>
+        </tr>
+        <tr>
+          <td class="nutrient-name">Aflatoxins (B1,B2,G1,G2)</td>
+          <td class="mono result-nd">ND</td>
+          <td class="mono">&lt; 10 ppb</td>
+          <td class="mono" style="font-size:0.75rem; color: var(--muted)">HPLC-FLD</td>
+          <td><span class="pass-pill">✓ Pass</span></td>
+        </tr>
+        <tr>
+          <td class="nutrient-name">Salmonella spp.</td>
+          <td class="mono result-pass">Absent</td>
+          <td class="mono">Absent / 25g</td>
+          <td class="mono" style="font-size:0.75rem; color: var(--muted)">ISO 6579</td>
+          <td><span class="pass-pill">✓ Pass</span></td>
+        </tr>
+        <tr>
+          <td class="nutrient-name">Total plate count</td>
+          <td class="mono result-pass">&lt; 10² CFU/g</td>
+          <td class="mono">&lt; 10⁶ CFU/g</td>
+          <td class="mono" style="font-size:0.75rem; color: var(--muted)">ISO 4833</td>
+          <td><span class="pass-pill">✓ Pass</span></td>
+        </tr>
+        <tr>
+          <td class="nutrient-name">Yeast &amp; Mould</td>
+          <td class="mono result-pass">&lt; 50 CFU/g</td>
+          <td class="mono">&lt; 10⁴ CFU/g</td>
+          <td class="mono" style="font-size:0.75rem; color: var(--muted)">ISO 21527</td>
+          <td><span class="pass-pill">✓ Pass</span></td>
+        </tr>
+        <tr>
+          <td class="nutrient-name">Moisture content</td>
+          <td class="mono">9.8%</td>
+          <td class="mono">&lt; 12%</td>
+          <td class="mono" style="font-size:0.75rem; color: var(--muted)">AOAC 934.06</td>
+          <td><span class="pass-pill">✓ Pass</span></td>
+        </tr>
+        <tr>
+          <td class="nutrient-name">Ash content</td>
+          <td class="mono">6.8%</td>
+          <td class="mono">&lt; 9%</td>
+          <td class="mono" style="font-size:0.75rem; color: var(--muted)">AOAC 942.05</td>
+          <td><span class="pass-pill">✓ Pass</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Info note -->
+  <div class="info-box">
+    <span class="info-icon">ℹ️</span>
+    <p class="info-text">
+      <strong>About this report:</strong> This Certificate of Analysis is issued per lot number. Each batch of Haldi Turmeric Powder is independently tested at an ISO 17025 accredited laboratory before release. Results apply only to the specific lot indicated above. ND = Not Detected (below instrument detection limit). For the full signed PDF report or to verify a lot number, contact us at <strong>quality@haldispices.com</strong>
+    </p>
+  </div>
+
+</main>
+
+<footer>
+  <strong>Haldi Spices Inc.</strong><br>
+  100% Turmeric Powder · Rich Aroma · Pure &amp; Natural<br><br>
+  This page is publicly accessible via QR code printed on every package.<br>
+  Report No. HDL-2024-0091 · Lot LOT-TUR-2024-A · © 2024 Haldi Spices Inc.
+</footer>
+
+</body>
+</html>
